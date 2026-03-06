@@ -23,12 +23,10 @@ export default async function handler(req, res) {
         mw(req, res, resolve);
     });
 
+    res.setHeader("Access-Control-Allow-Origin", "https://theamansharma.com");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
     if (req.method === "OPTIONS") {
-        res.setHeader(
-            "Access-Control-Allow-Origin",
-            "https://theamansharma.com",
-        );
-        res.setHeader("Access-Control-Allow-Headers", "Content-Type");
         return res.status(200).send();
     }
 

@@ -1,7 +1,0 @@
-[[headers]]
-  for = "/api/mail"
-  [headers.values]
-    Access-Control-Allow-Origin = "https://theamansharma.com"
-    Access-Control-Allow-Methods = "POST, OPTIONS"
-    Access-Control-Allow-Headers = "Content-Type"
-

@@ -23,6 +23,19 @@ export default async function handler(req, res) {
         mw(req, res, resolve);
     });
 
+    if (req.method === "OPTIONS") {
+        res.setHeader(
+            "Access-Control-Allow-Origin",
+            "https://theamansharma.com",
+        );
+        res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+        return res.status(200).send();
+    }
+
+    if (req.method !== "POST") {
+        return res.status(404).send();
+    }
+
     await db();
 
     const { to, cc, from, html, subject, text, messageId, date } = req.body;
@@ -40,7 +53,6 @@ export default async function handler(req, res) {
     // Here emailList is string contains email addresses separated by comma
 
     for (let { address } of emails) {
-
         let to = address?.toLowerCase();
 
         if (to.split("@").pop() === process.env.DOMAIN) {

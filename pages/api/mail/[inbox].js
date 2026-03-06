@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     if (req.method !== "GET") {
         return res.status(404).send();
     }
-    if (event.httpMethod === "OPTIONS") return { statusCode: 200, headers };
+    if (req.method === "OPTIONS") return { statusCode: 200, headers };
 
     await db();
 
